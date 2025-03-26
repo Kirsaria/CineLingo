@@ -1,0 +1,111 @@
+﻿<Page x:Class="CineLingo.Page.VideoPlayerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:CineLingo.Page"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Focusable="True"
+      Title="VideoPlayerPage">
+    <Grid>
+        <Label x:Name="TitleLbl" Content="Media player" Foreground="#EFDFC5" Padding="5,0,5,5" Margin="20" FontWeight="SemiBold" FontSize="16" BorderBrush="#8F0B13" BorderThickness="0,0,0,2"/>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,51,0,0">
+            <Grid x:Name="PlayerContainer" Width="Auto" Height="454">
+                <MediaElement x:Name="Player" LoadedBehavior="Manual" Stretch="Uniform" Volume="{Binding Value, ElementName=VolumeSlider}"/>
+                <Border x:Name="ControlPanel"
+                        Background="#80000000"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Stretch"
+                        Padding="10"
+                        Opacity="1">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Name="OpenFolder" Click="OpenFolder_Click" Padding="5" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image Height="24" Width="24" Source="/Images/folder.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="PlayBtn" Click="PlayBtn_Click" Padding="5" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image Height="24" Width="24" Source="/Images/play.png"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="PauseBtn" Click="PauseBtn_Click" Padding="5" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image Height="24" Width="24" Source="/Images/pause.png"/>
+                            </StackPanel>
+                        </Button>
+                        <TextBlock Name="StatusLbl" FontSize="14" Foreground="White" VerticalAlignment="Center" Margin="10,0" MinWidth="60" TextAlignment="Center">00:00:00</TextBlock>
+                        <Slider x:Name="ProgressSlider" Maximum="1" Thumb.DragStarted="ProgressSlider_DragStarted"  Thumb.DragCompleted="ProgressSlider_DragCompleted" ValueChanged="ProgressSlider_ValueChanged" VerticalAlignment="Center" Width="200"/>
+                        <Slider x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="0.5" Width="100" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter" SourceName="PlayerContainer">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="ControlPanel" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave" SourceName="PlayerContainer">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="ControlPanel" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+            </Grid>
+            <Button Name="OpenSubtitles" 
+                    Click="OpenSubtitles_Click" 
+                    Padding="5" 
+                    Margin="0,20,0,0" 
+                    HorizontalAlignment="Left"
+                    Background="Transparent" 
+                    BorderBrush="Transparent">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Image Height="24" Width="24" Source="/Images/folder.png"/>
+                    <TextBlock Text="Open Subtitles" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <TextBox x:Name="SubtitlesTextBox" 
+             BorderThickness="0" 
+             Background="Transparent"
+             Foreground="#EFDFC5" 
+             FontSize="16" 
+             Margin="0"
+             Padding="2" 
+             IsReadOnly="True"
+             SelectionBrush="#d3b78a" 
+             SelectionChanged="SubtitlesTextBox_SelectionChanged"
+             ContextMenuOpening="SubtitlesTextBox_ContextMenuOpening"
+             Width="699" 
+             Height="70">
+                <TextBox.ContextMenu>
+                    <ContextMenu x:Name="SubtitleContextMenu" 
+                    Background="#252B2B" 
+                    Foreground="#EFDFC5">
+                        <MenuItem Header="Сохранить в словарь" 
+                      Click="SaveToDictionaryMenuItem_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/Images/folder.png" Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </TextBox.ContextMenu>
+            </TextBox>
+            <StackPanel>
+                <Label x:Name="TranslationLabel" 
+                     Content="Перевод: " 
+                     Foreground="#EFDFC5" 
+                     FontSize="16" 
+                     HorizontalAlignment="Stretch" 
+                     VerticalAlignment="Bottom" 
+                     Background="Transparent"
+                     Padding="10"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
