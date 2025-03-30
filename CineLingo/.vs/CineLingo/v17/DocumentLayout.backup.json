@@ -1,81 +1,81 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Programming\\CineLingo\\",
+  "WorkspaceRootPath": "D:\\Programming\\CineLingoGit\\CineLingo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\page\\videoplayerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:page\\videoplayerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\styles\\darktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:styles\\darktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|d:\\programming\\cinelingo\\page\\authwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|d:\\programming\\cinelingogit\\cinelingo\\page\\authwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:page\\authwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\styles\\lighttheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|d:\\programming\\cinelingogit\\cinelingo\\page\\videoplayerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:page\\videoplayerpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\styles\\darktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:styles\\darktheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\styles\\lighttheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:styles\\lighttheme.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|d:\\programming\\cinelingo\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\page\\authwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\page\\authwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:page\\authwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\page\\videoplayerpage.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\page\\videoplayerpage.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:page\\videoplayerpage.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\styles\\buttonstyles.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\styles\\buttonstyles.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:styles\\buttonstyles.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\page\\authwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\page\\authwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:page\\authwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\page\\videoplayerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\page\\videoplayerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:page\\videoplayerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\page\\dictionarypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\page\\dictionarypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:page\\dictionarypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\models\\dictionaryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\models\\dictionaryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:models\\dictionaryitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\page\\dictionarypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\page\\dictionarypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:page\\dictionarypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\page\\dictionarypage.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\page\\dictionarypage.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:page\\dictionarypage.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingo\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|D:\\Programming\\CineLingoGit\\CineLingo\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9902FFF-435A-4CE9-9035-5C51A70A070C}|CineLingo.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -90,35 +90,33 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "DarkTheme.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Styles\\DarkTheme.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Styles\\DarkTheme.xaml",
               "RelativeDocumentMoniker": "Styles\\DarkTheme.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\Styles\\DarkTheme.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Styles\\DarkTheme.xaml",
               "RelativeToolTip": "Styles\\DarkTheme.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-29T12:10:30.583Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-29T12:10:30.583Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "LightTheme.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Styles\\LightTheme.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Styles\\LightTheme.xaml",
               "RelativeDocumentMoniker": "Styles\\LightTheme.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\Styles\\LightTheme.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Styles\\LightTheme.xaml",
               "RelativeToolTip": "Styles\\LightTheme.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-29T13:04:49.631Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-29T13:04:49.631Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "AuthWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Page\\AuthWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\AuthWindow.xaml.cs",
               "RelativeDocumentMoniker": "Page\\AuthWindow.xaml.cs",
-              "ToolTip": "D:\\Programming\\CineLingo\\Page\\AuthWindow.xaml.cs",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\AuthWindow.xaml.cs",
               "RelativeToolTip": "Page\\AuthWindow.xaml.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAswCwAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -128,34 +126,32 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "App.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\App.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\App.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-26T10:59:56.169Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T10:59:56.169Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "D:\\Programming\\CineLingo\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
               "ViewState": "AgIAAIUAAAAAAAAAAAAQwJoAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T14:58:36.605Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T14:58:36.605Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\MainWindow.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\MainWindow.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-26T13:49:09.901Z"
@@ -164,22 +160,22 @@
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "VideoPlayerPage.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Page\\VideoPlayerPage.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\VideoPlayerPage.xaml",
               "RelativeDocumentMoniker": "Page\\VideoPlayerPage.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\Page\\VideoPlayerPage.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\VideoPlayerPage.xaml",
               "RelativeToolTip": "Page\\VideoPlayerPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-26T10:57:16.549Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "VideoPlayerPage.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Page\\VideoPlayerPage.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\VideoPlayerPage.xaml.cs",
               "RelativeDocumentMoniker": "Page\\VideoPlayerPage.xaml.cs",
-              "ToolTip": "D:\\Programming\\CineLingo\\Page\\VideoPlayerPage.xaml.cs",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\VideoPlayerPage.xaml.cs",
               "RelativeToolTip": "Page\\VideoPlayerPage.xaml.cs",
-              "ViewState": "AgIAAFEBAAAAAAAAAAAowB8BAABcAAAAAAAAAA==",
+              "ViewState": "AgIAAPkAAAAAAAAAAAAgwB8BAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T10:57:52.444Z",
               "EditorCaption": ""
@@ -188,9 +184,9 @@
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "DictionaryPage.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Page\\DictionaryPage.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\DictionaryPage.xaml.cs",
               "RelativeDocumentMoniker": "Page\\DictionaryPage.xaml.cs",
-              "ToolTip": "D:\\Programming\\CineLingo\\Page\\DictionaryPage.xaml.cs",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\DictionaryPage.xaml.cs",
               "RelativeToolTip": "Page\\DictionaryPage.xaml.cs",
               "ViewState": "AgIAAEkAAAAAAAAAAAAQwF8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -200,9 +196,9 @@
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "DictionaryPage.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Page\\DictionaryPage.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\DictionaryPage.xaml",
               "RelativeDocumentMoniker": "Page\\DictionaryPage.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\Page\\DictionaryPage.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\DictionaryPage.xaml",
               "RelativeToolTip": "Page\\DictionaryPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-26T16:04:49.83Z"
@@ -211,9 +207,9 @@
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "DictionaryItem.cs",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Models\\DictionaryItem.cs",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Models\\DictionaryItem.cs",
               "RelativeDocumentMoniker": "Models\\DictionaryItem.cs",
-              "ToolTip": "D:\\Programming\\CineLingo\\Models\\DictionaryItem.cs",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Models\\DictionaryItem.cs",
               "RelativeToolTip": "Models\\DictionaryItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -223,9 +219,9 @@
               "$type": "Document",
               "DocumentIndex": 18,
               "Title": "User.cs",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Models\\User.cs",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "D:\\Programming\\CineLingo\\Models\\User.cs",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -235,9 +231,9 @@
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "App.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\App.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
-              "ToolTip": "D:\\Programming\\CineLingo\\App.xaml.cs",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\App.xaml.cs",
               "RelativeToolTip": "App.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -247,9 +243,9 @@
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "AuthWindow.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Page\\AuthWindow.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\AuthWindow.xaml",
               "RelativeDocumentMoniker": "Page\\AuthWindow.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\Page\\AuthWindow.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\AuthWindow.xaml",
               "RelativeToolTip": "Page\\AuthWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-03-26T12:58:59.814Z",
@@ -259,9 +255,9 @@
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "DictionaryPage.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Page\\DictionaryPage.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\DictionaryPage.xaml",
               "RelativeDocumentMoniker": "Page\\DictionaryPage.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\Page\\DictionaryPage.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\DictionaryPage.xaml",
               "RelativeToolTip": "Page\\DictionaryPage.xaml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAACgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -277,8 +273,8 @@
       "FloatingWindowState": {
         "Id": "982ca4f3-dd5c-44dc-863e-15e0555e385d",
         "Display": 0,
-        "X": 46,
-        "Y": 148,
+        "X": 446,
+        "Y": 122,
         "Width": 950,
         "Height": 534,
         "WindowState": 0
@@ -292,9 +288,9 @@
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "VideoPlayerPage.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Page\\VideoPlayerPage.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\VideoPlayerPage.xaml",
               "RelativeDocumentMoniker": "Page\\VideoPlayerPage.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\Page\\VideoPlayerPage.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\VideoPlayerPage.xaml",
               "RelativeToolTip": "Page\\VideoPlayerPage.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -304,9 +300,9 @@
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "ButtonStyles.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Styles\\ButtonStyles.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Styles\\ButtonStyles.xaml",
               "RelativeDocumentMoniker": "Styles\\ButtonStyles.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\Styles\\ButtonStyles.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Styles\\ButtonStyles.xaml",
               "RelativeToolTip": "Styles\\ButtonStyles.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -314,11 +310,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "AuthWindow.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\Page\\AuthWindow.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\AuthWindow.xaml",
               "RelativeDocumentMoniker": "Page\\AuthWindow.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\Page\\AuthWindow.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\Page\\AuthWindow.xaml",
               "RelativeToolTip": "Page\\AuthWindow.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -329,9 +325,9 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Programming\\CineLingo\\MainWindow.xaml",
+              "DocumentMoniker": "D:\\Programming\\CineLingoGit\\CineLingo\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Programming\\CineLingo\\MainWindow.xaml",
+              "ToolTip": "D:\\Programming\\CineLingoGit\\CineLingo\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
