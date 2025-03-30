@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Programming\CineLingo\App.xaml
-6-1574454375
+8315355577
 
 12-1261928674
 37-1094141403
-MainWindow.xaml;Page\AuthWindow.xaml;Page\CatalogPage.xaml;Page\DictionaryPage.xaml;Page\VideoPlayerPage.xaml;Styles\ButtonStyles.xaml;
+MainWindow.xaml;Page\AuthWindow.xaml;Page\CatalogPage.xaml;Page\DictionaryPage.xaml;Page\VideoPlayerPage.xaml;Styles\ButtonStyles.xaml;Styles\DarkTheme.xaml;Styles\LightTheme.xaml;
 
 True
 

@@ -19,6 +19,7 @@ using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using MySql.Data.MySqlClient;
+using CineLingo.Models;
 
 namespace CineLingo.Page
 {
@@ -193,7 +194,7 @@ namespace CineLingo.Page
         {
             _currentSubtitleFile = Path.GetFileName(subtitleFilePath);
             Subtitles.Clear();
-
+            LoadWordsForCurrentSubtitles();
             var lines = File.ReadAllLines(subtitleFilePath);
             for (int i = 0; i < lines.Length; i++)
             {
@@ -368,6 +369,7 @@ namespace CineLingo.Page
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Слово сохранено в словарь");
+                            LoadWordsForCurrentSubtitles();
                         }
                     }
                 }
@@ -377,5 +379,48 @@ namespace CineLingo.Page
                 MessageBox.Show($"Ошибка при сохранении: {ex.Message}");
             }
         }
+        private async void LoadWordsForCurrentSubtitles()
+        {
+            if (AuthWindow.CurrentUserId == 0 || string.IsNullOrEmpty(_currentSubtitleFile))
+                return;
+
+            try
+            {
+                using (var connection = new MySqlConnection(AuthWindow.ConnectionString))
+                {
+                    await connection.OpenAsync();
+                    string query = @"SELECT WordOrPhrase, translation 
+                              FROM DictionaryItem 
+                              WHERE userId = @userId AND subtitleFile = @currentFile
+                              ORDER BY addedDate DESC";
+
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@userId", AuthWindow.CurrentUserId);
+                        command.Parameters.AddWithValue("@currentFile", _currentSubtitleFile);
+
+                        var items = new List<DictionaryItem>();
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                items.Add(new DictionaryItem
+                                {
+                                    WordOrPhrase = reader["WordOrPhrase"].ToString(),
+                                    Translation = reader["translation"].ToString()
+                                });
+                            }
+                        }
+
+                        DictionaryList.ItemsSource = items;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Ошибка загрузки слов: {ex.Message}");
+            }
+        }
+
     }
 }

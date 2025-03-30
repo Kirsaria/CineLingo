@@ -7,8 +7,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="AuthWindow" Height="300" Width="400"
-        WindowStartupLocation="CenterScreen">
-    <Grid>
+        WindowStartupLocation="CenterScreen"
+        Icon="icon.ico">
+    <Grid Style="{DynamicResource GridStyle}">
         <Grid>
             <TabControl>
                 <TabItem Header="Вход">
@@ -21,7 +22,7 @@
                                  Margin="0,0,0,20"/>
                         <Button Content="Войти" 
                             Click="Login_Click"
-                            Style="{StaticResource MaterialDesignRaisedButton}"/>
+                            Style="{DynamicResource ButtonStyle}"/>
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Регистрация">
@@ -37,7 +38,7 @@
                                  Margin="0,0,0,20"/>
                         <Button Content="Зарегистрироваться" 
                             Click="Register_Click"
-                            Style="{StaticResource MaterialDesignRaisedButton}"/>
+                            Style="{DynamicResource ButtonStyle}"/>
                     </StackPanel>
                 </TabItem>
             </TabControl>

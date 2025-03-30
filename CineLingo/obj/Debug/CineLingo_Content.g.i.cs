@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/close_window.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/dark_theme.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/light_theme.png")]
 
 

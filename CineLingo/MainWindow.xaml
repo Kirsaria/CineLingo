@@ -10,49 +10,29 @@
         Height="350" 
         Width="825" 
         WindowStyle="None" 
-        AllowsTransparency="True">
+        WindowState="Maximized"
+        AllowsTransparency="True"
+        Icon="icon.ico">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="10"/>
     </WindowChrome.WindowChrome>
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/ButtonStyles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
-    <Grid Background="#252B2B">
-        <Border Background="#252B2B" VerticalAlignment="Top" Height="60" Grid.ColumnSpan="3" Margin="0,0,0,0">
+    <Grid Style="{DynamicResource GridStyle}">
+        <Border Style="{DynamicResource BorderStyle}" VerticalAlignment="Top" Height="60" Grid.ColumnSpan="3" Margin="0,0,0,0">
             <Border.Effect>
                 <DropShadowEffect Color="#380F17" Direction="200" BlurRadius="10" ShadowDepth="5" Opacity="0.5" />
             </Border.Effect>
             <Grid VerticalAlignment="Top" Height="60">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0">
-                    <Button Content="Каталог" Foreground="#EFDFC5" Click="NavigateToCatalog" Margin="10,0" Padding="20 5" />
-                    <Button Content="Словарь" Foreground="#EFDFC5" Click="NavigateToDictionary" Margin="10,0" Padding="20 5" />
-                    <Button Content="Видеоплеер" Foreground="#EFDFC5" Click="NavigateToVideoPlayer" Margin="10,0" Padding="20 5" />
+                    <Button Style="{DynamicResource ButtonStyle}" Content="Каталог" Foreground="#EFDFC5" Click="NavigateToCatalog" Margin="10,0" Padding="20 5" />
+                    <Button Style="{DynamicResource ButtonStyle}" Content="Словарь" Foreground="#EFDFC5" Click="NavigateToDictionary" Margin="10,0" Padding="20 5" />
+                    <Button Style="{DynamicResource ButtonStyle}" Content="Видеоплеер" Foreground="#EFDFC5" Click="NavigateToVideoPlayer" Margin="10,0" Padding="20 5" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,20,0">
-                    <Button x:Name="user" Style="{StaticResource UserStyle}" Click="UserButton_Click" Margin="10,0">
-                        <Button.Background>
-                            <ImageBrush ImageSource="/Images/user.png" Stretch="Uniform"/>
-                        </Button.Background>
-                    </Button>
-                    <Button x:Name="hidewindow" Style="{StaticResource UserStyle}" Click="MinimizeButton_Click" Margin="10,0">
-                        <Button.Background>
-                            <ImageBrush ImageSource="/Images/hideWindow.png" Stretch="Uniform"/>
-                        </Button.Background>
-                    </Button>
-                    <Button x:Name="fullscreen" Style="{StaticResource UserStyle}" Click="MaximizeButton_Click" Margin="10,0">
-                        <Button.Background>
-                            <ImageBrush ImageSource="/Images/fullScreen.png" Stretch="Uniform"/>
-                        </Button.Background>
-                    </Button>
-                    <Button x:Name="exit" Style="{StaticResource UserStyle}" Click="ExitBtn_Click" Margin="10,0">
-                        <Button.Background>
-                            <ImageBrush ImageSource="/Images/closeWindow.png" Stretch="Uniform"/>
-                        </Button.Background>
-                    </Button>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" Margin="10,0">
+                    <Button x:Name="SwitchThemeButton" Style="{DynamicResource DarkStyle}" Click="SwitchTheme" Margin="10 0"/>
+                    <Button x:Name="user" Style="{DynamicResource UserStyle}" Click="UserButton_Click" Margin="10,0"/>
+                    <Button x:Name="hidewindow" Style="{DynamicResource MinimizeStyle}" Click="MinimizeButton_Click" Margin="10,0"/>
+                    <Button x:Name="fullscreen" Style="{DynamicResource FullscreenStyle}" Click="MaximizeButton_Click" Margin="10,0"/>
+                    <Button x:Name="exit" Style="{DynamicResource CloseStyle}" Click="ExitBtn_Click" Margin="10,0"/>
                 </StackPanel>
             </Grid>
         </Border>

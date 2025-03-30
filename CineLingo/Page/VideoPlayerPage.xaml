@@ -6,12 +6,12 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:CineLingo.Page"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Focusable="True"
       Title="VideoPlayerPage">
     <Grid>
-        <Label x:Name="TitleLbl" Content="Media player" Foreground="#EFDFC5" Padding="5,0,5,5" Margin="20" FontWeight="SemiBold" FontSize="16" BorderBrush="#8F0B13" BorderThickness="0,0,0,2"/>
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,51,0,0">
+        <Label x:Name="TitleLbl" Content="Медиаплеер" Foreground="#EFDFC5" Padding="5,0,5,5" Margin="20" FontWeight="SemiBold" FontSize="16" BorderBrush="#8F0B13" BorderThickness="0,0,0,2"/>
+        <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,51,0,0">
             <Grid x:Name="PlayerContainer" Width="Auto" Height="454">
                 <MediaElement x:Name="Player" LoadedBehavior="Manual" Stretch="Uniform" Volume="{Binding Value, ElementName=VolumeSlider}"/>
                 <Border x:Name="ControlPanel"
@@ -106,6 +106,43 @@
                      Background="Transparent"
                      Padding="10"/>
             </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="960,30,20,52">
+            <TextBlock Text="Словарь" Foreground="#EFDFC5" 
+                           FontSize="16" 
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,10"/>
+            <ListView x:Name="DictionaryList" Background="Transparent" BorderThickness="0">
+                <ListView.Style>
+                    <Style TargetType="ListView">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Items.Count, ElementName=DictionaryList}" Value="0">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <TextBlock Text="Нет сохраненных слов для этого файла" 
+                                           Foreground="#8F8F8F"/>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.Style>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0 5">
+                            <TextBlock Text="{Binding WordOrPhrase}" 
+                                           Foreground="#EFDFC5" 
+                                           FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Translation}" 
+                                           Foreground="#d3b78a"
+                                           Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
     </Grid>
 </Page>

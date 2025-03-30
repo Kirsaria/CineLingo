@@ -66,3 +66,5 @@ D:\Programming\CineLingo\bin\Debug\System.Memory.xml
 D:\Programming\CineLingo\bin\Debug\System.Numerics.Vectors.xml
 D:\Programming\CineLingo\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\Programming\CineLingo\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Programming\CineLingo\obj\Debug\Styles\DarkTheme.baml
+D:\Programming\CineLingo\obj\Debug\Styles\LightTheme.baml

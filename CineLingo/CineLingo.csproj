@@ -153,6 +153,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\DarkTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\LightTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\DictionaryItem.cs" />
@@ -219,6 +227,22 @@
   <ItemGroup>
     <Folder Include="Classes\" />
     <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Page\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\dark_theme.png" />
+    <Resource Include="Images\light_theme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\closeWindowlight.png" />
+    <Resource Include="Images\fullScreenlight.png" />
+    <Resource Include="Images\hideWindowlight.png" />
+    <Resource Include="Images\userlight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.5.2.1\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.5.2.1\build\MaterialDesignThemes.targets')" />
