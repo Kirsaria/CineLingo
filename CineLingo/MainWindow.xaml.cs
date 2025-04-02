@@ -191,13 +191,22 @@ namespace CineLingo
                 user.ToolTip = AuthWindow.CurrentUsername;
             }
         }
-
+        private bool isLightTheme = true;
         private void SwitchTheme(object sender, RoutedEventArgs e)
         {
-            var uri = new Uri(@"/Styles/LightTheme.xaml", UriKind.Relative);
+            Uri uri;
+            if(isLightTheme)
+            {
+                uri = new Uri(@"/Styles/DarkTheme.xaml", UriKind.Relative);
+            }
+            else
+            {
+                uri = new Uri(@"/Styles/LightTheme.xaml", UriKind.Relative);
+            }
             ResourceDictionary resourceDictionary = Application.LoadComponent(uri) as ResourceDictionary;
             Application.Current.Resources.Clear();
             Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+            isLightTheme = !isLightTheme;
         }
     }
 }

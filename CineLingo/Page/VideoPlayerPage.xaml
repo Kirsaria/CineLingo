@@ -10,7 +10,7 @@
       Focusable="True"
       Title="VideoPlayerPage">
     <Grid>
-        <Label x:Name="TitleLbl" Content="Медиаплеер" Foreground="#EFDFC5" Padding="5,0,5,5" Margin="20" FontWeight="SemiBold" FontSize="16" BorderBrush="#8F0B13" BorderThickness="0,0,0,2"/>
+        <Label x:Name="TitleLbl" Style="{DynamicResource LabelStyle}" Content="Медиаплеер" Padding="5,0,5,5" Margin="20" FontWeight="SemiBold" FontSize="16" BorderThickness="0,0,0,2"/>
         <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,51,0,0">
             <Grid x:Name="PlayerContainer" Width="Auto" Height="454">
                 <MediaElement x:Name="Player" LoadedBehavior="Manual" Stretch="Uniform" Volume="{Binding Value, ElementName=VolumeSlider}"/>
@@ -70,15 +70,13 @@
                     <TextBlock Text="Open Subtitles" Margin="5,0,0,0"/>
                 </StackPanel>
             </Button>
-            <TextBox x:Name="SubtitlesTextBox" 
+            <TextBox x:Name="SubtitlesTextBox" Style="{DynamicResource TextBoxStyle}"
              BorderThickness="0" 
              Background="Transparent"
-             Foreground="#EFDFC5" 
              FontSize="16" 
              Margin="0"
              Padding="2" 
              IsReadOnly="True"
-             SelectionBrush="#d3b78a" 
              SelectionChanged="SubtitlesTextBox_SelectionChanged"
              ContextMenuOpening="SubtitlesTextBox_ContextMenuOpening"
              Width="699" 
@@ -97,9 +95,8 @@
                 </TextBox.ContextMenu>
             </TextBox>
             <StackPanel>
-                <Label x:Name="TranslationLabel" 
+                <Label x:Name="TranslationLabel" Style="{DynamicResource LabelStyle}"
                      Content="Перевод: " 
-                     Foreground="#EFDFC5" 
                      FontSize="16" 
                      HorizontalAlignment="Stretch" 
                      VerticalAlignment="Bottom" 
@@ -108,7 +105,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="960,30,20,52">
-            <TextBlock Text="Словарь" Foreground="#EFDFC5" 
+            <TextBlock Text="Словарь" Style="{DynamicResource TextBlockStyle}" 
                            FontSize="16" 
                            FontWeight="SemiBold"
                            Margin="0,0,0,10"/>
@@ -133,11 +130,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="0 5">
-                            <TextBlock Text="{Binding WordOrPhrase}" 
-                                           Foreground="#EFDFC5" 
+                            <TextBlock Text="{Binding WordOrPhrase}" Style="{DynamicResource TextBlockStyle}"
                                            FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Translation}" 
-                                           Foreground="#d3b78a"
+                            <TextBlock Text="{Binding Translation}" Style="{DynamicResource TextBlockStyle}"
                                            Margin="5,0,0,0"/>
                         </StackPanel>
                     </DataTemplate>

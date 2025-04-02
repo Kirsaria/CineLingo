@@ -11,8 +11,8 @@
         Icon="icon.ico">
     <Grid Style="{DynamicResource GridStyle}">
         <Grid>
-            <TabControl>
-                <TabItem Header="Вход">
+            <TabControl Style="{StaticResource TabControlStyle}">
+                <TabItem Header="Вход" Style="{StaticResource TabItemStyle}">
                     <StackPanel Margin="20">
                         <TextBox x:Name="LoginUsername" 
                              materialDesign:HintAssist.Hint="Логин" 
@@ -25,7 +25,7 @@
                             Style="{DynamicResource ButtonStyle}"/>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Регистрация">
+                <TabItem Header="Регистрация" Style="{StaticResource TabItemStyle}">
                     <StackPanel Margin="20">
                         <TextBox x:Name="RegUsername" 
                              materialDesign:HintAssist.Hint="Логин" 

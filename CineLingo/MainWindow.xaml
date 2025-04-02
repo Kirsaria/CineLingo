@@ -23,9 +23,9 @@
             </Border.Effect>
             <Grid VerticalAlignment="Top" Height="60">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0">
-                    <Button Style="{DynamicResource ButtonStyle}" Content="Каталог" Foreground="#EFDFC5" Click="NavigateToCatalog" Margin="10,0" Padding="20 5" />
-                    <Button Style="{DynamicResource ButtonStyle}" Content="Словарь" Foreground="#EFDFC5" Click="NavigateToDictionary" Margin="10,0" Padding="20 5" />
-                    <Button Style="{DynamicResource ButtonStyle}" Content="Видеоплеер" Foreground="#EFDFC5" Click="NavigateToVideoPlayer" Margin="10,0" Padding="20 5" />
+                    <Button Style="{DynamicResource ButtonStyle}" Content="Каталог" Click="NavigateToCatalog" Margin="10,0" Padding="20 5" />
+                    <Button Style="{DynamicResource ButtonStyle}" Content="Словарь" Click="NavigateToDictionary" Margin="10,0" Padding="20 5" />
+                    <Button Style="{DynamicResource ButtonStyle}" Content="Видеоплеер" Click="NavigateToVideoPlayer" Margin="10,0" Padding="20 5" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" Margin="10,0">
                     <Button x:Name="SwitchThemeButton" Style="{DynamicResource DarkStyle}" Click="SwitchTheme" Margin="10 0"/>
