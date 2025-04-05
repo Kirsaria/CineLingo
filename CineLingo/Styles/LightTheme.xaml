@@ -16,6 +16,9 @@
     <Style x:Key="BorderStyle" TargetType="Border">
         <Setter Property="Background" Value="#F5EEE5"/>
     </Style>
+    <Style x:Key="BorderCatalogStyle" TargetType="Border">
+        <Setter Property="BorderBrush" Value="#0E7948"/>
+    </Style>
     <Style x:Key="LabelStyle" TargetType="Label">
         <Setter Property="Foreground" Value="#473F34"/>
         <Setter Property="BorderBrush" Value="#0E7948"/>
