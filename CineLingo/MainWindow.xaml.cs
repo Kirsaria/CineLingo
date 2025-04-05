@@ -145,7 +145,19 @@ namespace CineLingo
 
         private void NavigateToCatalog(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new CatalogPage());
+            if (AuthWindow.CurrentUserId == 0)
+            {
+                MessageBox.Show("Пожалуйста, войдите в систему для доступа к каталогу");
+                return;
+            }
+            if (AuthWindow.CurrentUserRole == "admin")
+            {
+                MainFrame.Navigate(new AdminCatalogPage());
+            }
+            else
+            {
+                MainFrame.Navigate(new CatalogPage());
+            }
         }
 
         private void NavigateToDictionary(object sender, RoutedEventArgs e)
@@ -160,7 +172,7 @@ namespace CineLingo
 
         private void NavigateToVideoPlayer(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new VideoPlayerPage());
+            MainFrame.Navigate(new VideoPlayerPage(0));
         }
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {

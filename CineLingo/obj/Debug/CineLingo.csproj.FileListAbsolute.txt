@@ -138,3 +138,7 @@ D:\Programming\CineLingoGit\CineLingo\obj\Debug\CineLingo.csproj.CoreCompileInpu
 D:\Programming\CineLingoGit\CineLingo\obj\Debug\CineLingo.csproj.Up2Date
 D:\Programming\CineLingoGit\CineLingo\obj\Debug\CineLingo.exe
 D:\Programming\CineLingoGit\CineLingo\obj\Debug\CineLingo.pdb
+D:\Programming\CineLingoGit\CineLingo\obj\Debug\Page\AddMovieWindow.baml
+D:\Programming\CineLingoGit\CineLingo\obj\Debug\Page\AdminCatalogPage.baml
+D:\Programming\CineLingoGit\CineLingo\obj\Debug\Page\AddMovieWindow.g.cs
+D:\Programming\CineLingoGit\CineLingo\obj\Debug\Page\AdminCatalogPage.g.cs

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Programming\CineLingo\obj\Debug\
+D:\Programming\CineLingoGit\CineLingo\obj\Debug\
 CineLingo
 none
 false
 DEBUG;TRACE
-D:\Programming\CineLingo\App.xaml
-8315355577
+D:\Programming\CineLingoGit\CineLingo\App.xaml
+102095644877
 
-12-1261928674
-37-1094141403
-MainWindow.xaml;Page\AuthWindow.xaml;Page\CatalogPage.xaml;Page\DictionaryPage.xaml;Page\VideoPlayerPage.xaml;Styles\ButtonStyles.xaml;Styles\DarkTheme.xaml;Styles\LightTheme.xaml;
+1588006446
+371745358713
+MainWindow.xaml;Page\AddMovieWindow.xaml;Page\AdminCatalogPage.xaml;Page\AuthWindow.xaml;Page\CatalogPage.xaml;Page\DictionaryPage.xaml;Page\VideoPlayerPage.xaml;Styles\ButtonStyles.xaml;Styles\DarkTheme.xaml;Styles\LightTheme.xaml;
 
 True
 

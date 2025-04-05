@@ -28,6 +28,7 @@ namespace CineLingo.Page
         private readonly Regex _usernameRegex = new Regex(@"^[a-zA-Z0-9_]{4,20}$");
         private readonly Regex _emailRegex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
         private readonly Regex _passwordRegex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
+        public static string CurrentUserRole { get; private set; } = "";
         public AuthWindow()
         {
             InitializeComponent();
@@ -68,8 +69,9 @@ namespace CineLingo.Page
                                 {
                                     CurrentUserId = Convert.ToInt32(reader["id"]);
                                     CurrentUsername = reader["username"].ToString();
+                                    CurrentUserRole = GetUserRole(username);
+                                    MessageBox.Show(CurrentUserRole);
                                     DialogResult = true;
-                                    MessageBox.Show("Успешный вход");
                                     Close();
                                 }
                                 else
@@ -89,6 +91,29 @@ namespace CineLingo.Page
             {
                 MessageBox.Show($"Ошибка при входе: {ex.Message}");
             }
+        }
+
+        private string GetUserRole(string username)
+        {
+            string role = "";
+            string roleQuery = "SELECT roles FROM Users WHERE username = @username";
+
+            using (var connection = new MySqlConnection(ConnectionString))
+            {
+                connection.Open();
+                using (var roleCommand = new MySqlCommand(roleQuery, connection))
+                {
+                    roleCommand.Parameters.AddWithValue("@username", username);
+                    using (var roleReader = roleCommand.ExecuteReader())
+                    {
+                        if (roleReader.Read())
+                        {
+                            role = roleReader["roles"].ToString();
+                        }
+                    }
+                }
+            }
+            return role;
         }
 
         private void Register_Click(object sender, EventArgs e)

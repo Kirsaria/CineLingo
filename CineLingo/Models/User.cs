@@ -14,5 +14,6 @@ namespace CineLingo.Models
             public string Email { get; set; }
             public DateTime CreatedAt { get; set; }
             public List<DictionaryItem> DictionaryItems { get; set; } = new List<DictionaryItem>();
+            public string role { get; set; }
     }
 }

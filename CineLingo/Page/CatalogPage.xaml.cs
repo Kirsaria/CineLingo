@@ -15,14 +15,16 @@ using System.Windows.Shapes;
 
 namespace CineLingo.Page
 {
-    /// <summary>
-    /// Логика взаимодействия для CatalogPage.xaml
-    /// </summary>
     public partial class CatalogPage : System.Windows.Controls.Page
     {
         public CatalogPage()
         {
             InitializeComponent();
+        }
+        private void MovieButton_Click(object sender, RoutedEventArgs e)
+        {
+            var movieId = (int)((Button)sender).Tag;
+            NavigationService.Navigate(new VideoPlayerPage(movieId));
         }
     }
 }

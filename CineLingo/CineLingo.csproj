@@ -133,6 +133,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Page\AddMovieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\AdminCatalogPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Page\AuthWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,7 +172,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\DictionaryItem.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Page\AddMovieWindow.xaml.cs">
+      <DependentUpon>AddMovieWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\AdminCatalogPage.xaml.cs">
+      <DependentUpon>AdminCatalogPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page\AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
     </Compile>
@@ -227,6 +242,7 @@
   <ItemGroup>
     <Folder Include="Classes\" />
     <Folder Include="Data\" />
+    <Folder Include="Subtitiles\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />

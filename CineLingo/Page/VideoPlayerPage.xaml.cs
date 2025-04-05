@@ -61,7 +61,7 @@ namespace CineLingo.Page
             }
         }
 
-        public VideoPlayerPage()
+        public VideoPlayerPage(int movieId)
         {
             InitializeComponent();
             Timer.Tick += Timer_Tick;
@@ -72,6 +72,45 @@ namespace CineLingo.Page
             Player.MediaOpened += Player_MediaOpened;
             SubtitleTimer.Tick += SubtitleTimer_Tick;
             SubtitleTimer.Start();
+            LoadMovie(movieId);
+        }
+        private void LoadMovie(int movieId)
+        {
+            try
+            {
+                using (var connection = new MySqlConnection(AuthWindow.ConnectionString))
+                {
+                    connection.Open();
+                    var query = @"SELECT m.video_url, s.subtitle_file 
+                      FROM Movies m
+                      LEFT JOIN Subtitles s ON m.id = s.movie_id
+                      WHERE m.id = @movieId
+                      LIMIT 1";
+
+                    using (var command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@movieId", movieId);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string videoUrl = reader.GetString("video_url");
+                                Player.Source = new Uri(videoUrl);
+                                Player.Play();
+                                IsPlaying = true;
+
+                                string subtitlePath = reader.GetString("subtitle_file");
+                                LoadSubtitles(subtitlePath);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки фильма: {ex.Message}");
+            }
         }
         private void SubtitleTimer_Tick(object sender, EventArgs e)
         {
