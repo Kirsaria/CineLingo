@@ -15,4 +15,10 @@ namespace CineLingo.Models
         public string PosterUrl { get; set; }
         public string Level_en { get; set; }
     }
+
+    public class SubtitleInfo
+    {
+        public string Language { get; set; }
+        public string FilePath { get; set; }
+    }
 }

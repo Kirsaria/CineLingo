@@ -7,53 +7,261 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CatalogPage">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+        <Style TargetType="Border" x:Key="MovieItemStyle">
+            <Setter Property="Width" Value="115"/>
+            <Setter Property="Height" Value="220"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignShadowBrush}"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="ToolTip">
+                <Setter.Value>
+                    <ToolTip>
+                        <TextBlock Text="{Binding Description_movie}" 
+                               TextWrapping="Wrap" 
+                               MaxWidth="300" Style="{DynamicResource TextBlockStyle}"/>
+                    </ToolTip>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RoundedImageStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Clip">
+                <Setter.Value>
+                    <RectangleGeometry Rect="0,0,115,170" RadiusX="8" RadiusY="8"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Height" Value="170"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+    </Page.Resources>
+
     <ScrollViewer>
-        <ItemsControl x:Name="LevelsItemsControl">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" Margin="0,0,0,20">
-                        <StackPanel>
-                            <TextBlock Text="{Binding Key}" 
-                                       FontSize="18" 
-                                       FontWeight="Bold"
-                                       Margin="10,10,0,5"/>
+        <StackPanel>
+            <!-- A1 Level -->
+            <Border BorderThickness="0,0,0,3" Margin="0,0,0,20" CornerRadius="30" Style="{DynamicResource BorderCatalogStyle}">
+                <StackPanel>
+                    <TextBlock Text="A1" FontSize="18" FontWeight="Bold" Margin="10,10,0,5" Style="{DynamicResource TextBlockStyle}"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <ItemsControl x:Name="A1Movies" ItemsSource="{Binding}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource MovieItemStyle}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Style="{StaticResource RoundedImageStyle}">
+                                                <Image Source="{Binding PosterUrl}" Stretch="UniformToFill" Height="170" Width="120"/>
+                                            </Border>
+                                            <StackPanel Grid.Row="1" Margin="10">
+                                                <TextBlock Text="{Binding Title}" FontWeight="Bold" TextWrapping="Wrap" Style="{DynamicResource TextBlockStyle}"/>
+                                            </StackPanel>
+                                            <Button Width="120" Height="170" Background="Transparent" BorderBrush="Transparent" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDoubleClick="OnMovieDoubleClick"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
 
-                            <ItemsControl ItemsSource="{Binding Value}">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
+            <!-- A2 Level -->
+            <Border BorderThickness="0,0,0,3" Margin="0,0,0,20" CornerRadius="30" Style="{DynamicResource BorderCatalogStyle}">
+                <StackPanel>
+                    <TextBlock Text="A2" FontSize="18" FontWeight="Bold" Margin="10,10,0,5" Style="{DynamicResource TextBlockStyle}"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <ItemsControl x:Name="A2Movies" ItemsSource="{Binding}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource MovieItemStyle}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Style="{StaticResource RoundedImageStyle}">
+                                                <Image Source="{Binding PosterUrl}" Stretch="UniformToFill" Height="170" Width="120"/>
+                                            </Border>
+                                            <StackPanel Grid.Row="1" Margin="10">
+                                                <TextBlock Text="{Binding Title}" FontWeight="Bold" TextWrapping="Wrap" Style="{DynamicResource TextBlockStyle}"/>
+                                            </StackPanel>
+                                            <Button Width="120" Height="170" Background="Transparent" BorderBrush="Transparent" 
+VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDoubleClick="OnMovieDoubleClick"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
 
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Button Style="{StaticResource MovieButtonStyle}" 
-                                                Click="MovieButton_Click"
-                                                Tag="{Binding Id}">
-                                            <Grid Width="180" Height="250">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="150"/>
-                                                    <RowDefinition Height="*"/>
-                                                </Grid.RowDefinitions>
+            <!-- B1 Level -->
+            <Border BorderThickness="0,0,0,3" Margin="0,0,0,20" CornerRadius="30" Style="{DynamicResource BorderCatalogStyle}">
+                <StackPanel>
+                    <TextBlock Text="B1" FontSize="18" FontWeight="Bold" Margin="10,10,0,5" Style="{DynamicResource TextBlockStyle}"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <ItemsControl x:Name="B1Movies" ItemsSource="{Binding}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Width="200" Height="300" Margin="10" BorderBrush="Gray" BorderThickness="1"  Style="{StaticResource MovieItemStyle}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Style="{StaticResource RoundedImageStyle}">
+                                                <Image Source="{Binding PosterUrl}" Stretch="UniformToFill" Height="170" Width="120"/>
+                                            </Border>
+                                            <StackPanel Grid.Row="1" Margin="10">
+                                                <TextBlock Text="{Binding Title}" FontWeight="Bold" TextWrapping="Wrap" Style="{DynamicResource TextBlockStyle}"/>
+                                            </StackPanel>
+                                            <Button Width="120" Height="170" Background="Transparent" BorderBrush="Transparent" 
+VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDoubleClick="OnMovieDoubleClick"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
 
-                                                <Image Source="{Binding PosterUrl}" 
-                                                       Stretch="UniformToFill"
-                                                       Height="150"/>
+            <!-- B2 Level -->
+            <Border BorderThickness="0,0,0,3" Margin="0,0,0,20" CornerRadius="30" Style="{DynamicResource BorderCatalogStyle}">
+                <StackPanel>
+                    <TextBlock Text="B2" FontSize="18" FontWeight="Bold" Margin="10,10,0,5" Style="{DynamicResource TextBlockStyle}"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <ItemsControl x:Name="B2Movies" ItemsSource="{Binding}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Width="200" Height="300" Margin="10" BorderBrush="Gray" BorderThickness="1"  Style="{StaticResource MovieItemStyle}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Style="{StaticResource RoundedImageStyle}">
+                                                <Image Source="{Binding PosterUrl}" Stretch="UniformToFill" Height="170" Width="120"/>
+                                            </Border>
+                                            <StackPanel Grid.Row="1" Margin="10">
+                                                <TextBlock Text="{Binding Title}" FontWeight="Bold" TextWrapping="Wrap" Style="{DynamicResource TextBlockStyle}"/>
+                                            </StackPanel>
+                                            <Button Width="120" Height="170" Background="Transparent" BorderBrush="Transparent" 
+VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDoubleClick="OnMovieDoubleClick"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
 
-                                                <StackPanel Grid.Row="1" Margin="10">
-                                                    <TextBlock Text="{Binding Title}" 
-                                                               FontWeight="Bold"
-                                                               TextWrapping="Wrap"/>
-                                                </StackPanel>
-                                            </Grid>
-                                        </Button>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </StackPanel>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            <!-- C1 Level -->
+            <Border BorderThickness="0,0,0,3" Margin="0,0,0,20" CornerRadius="30" Style="{DynamicResource BorderCatalogStyle}">
+                <StackPanel>
+                    <TextBlock Text="C1" FontSize="18" FontWeight="Bold" Margin="10,10,0,5" Style="{DynamicResource TextBlockStyle}"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <ItemsControl x:Name="C1Movies" ItemsSource="{Binding}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Width="200" Height="300" Margin="10" BorderBrush="Gray" BorderThickness="1"  Style="{StaticResource MovieItemStyle}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Style="{StaticResource RoundedImageStyle}">
+                                                <Image Source="{Binding PosterUrl}" Stretch="UniformToFill" Height="170" Width="120"/>
+                                            </Border>
+                                            <StackPanel Grid.Row="1" Margin="10">
+                                                <TextBlock Text="{Binding Title}" FontWeight="Bold" TextWrapping="Wrap" Style="{DynamicResource TextBlockStyle}"/>
+                                            </StackPanel>
+                                            <Button Width="120" Height="170" Background="Transparent" BorderBrush="Transparent" 
+VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDoubleClick="OnMovieDoubleClick"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- C2 Level -->
+            <Border BorderThickness="0,0,0,3" Margin="0,0,0,20" CornerRadius="30" Style="{DynamicResource BorderCatalogStyle}">
+                <StackPanel>
+                    <TextBlock Text="C2" FontSize="18" FontWeight="Bold" Margin="10,10,0,5" Style="{DynamicResource TextBlockStyle}"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <ItemsControl x:Name="C2Movies" ItemsSource="{Binding}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Width="200" Height="300" Margin="10" BorderBrush="Gray" BorderThickness="1"  Style="{StaticResource MovieItemStyle}">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Style="{StaticResource RoundedImageStyle}">
+                                                <Image Source="{Binding PosterUrl}" Stretch="UniformToFill" Height="170" Width="120"/>
+                                            </Border>
+                                            <StackPanel Grid.Row="1" Margin="10">
+                                                <TextBlock Text="{Binding Title}" FontWeight="Bold" TextWrapping="Wrap" Style="{DynamicResource TextBlockStyle}"/>
+                                            </StackPanel>
+                                            <Button Width="120" Height="170" Background="Transparent" BorderBrush="Transparent" 
+VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDoubleClick="OnMovieDoubleClick"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
     </ScrollViewer>
 </Page>

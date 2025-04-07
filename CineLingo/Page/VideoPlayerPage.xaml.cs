@@ -82,10 +82,10 @@ namespace CineLingo.Page
                 {
                     connection.Open();
                     var query = @"SELECT m.video_url, s.subtitle_file 
-                      FROM Movies m
-                      LEFT JOIN Subtitles s ON m.id = s.movie_id
-                      WHERE m.id = @movieId
-                      LIMIT 1";
+                          FROM Movies m
+                          LEFT JOIN Subtitles s ON m.id = s.movie_id
+                          WHERE m.id = @movieId
+                          LIMIT 1";
 
                     using (var command = new MySqlCommand(query, connection))
                     {
@@ -103,6 +103,10 @@ namespace CineLingo.Page
                                 string subtitlePath = reader.GetString("subtitle_file");
                                 LoadSubtitles(subtitlePath);
                             }
+                            else
+                            {
+                                MessageBox.Show("Фильм не найден.");
+                            }
                         }
                     }
                 }
@@ -110,8 +114,10 @@ namespace CineLingo.Page
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка загрузки фильма: {ex.Message}");
+                Debug.WriteLine($"Ошибка загрузки фильма: {ex}");
             }
         }
+
         private void SubtitleTimer_Tick(object sender, EventArgs e)
         {
             if (Player.Source != null && Player.NaturalDuration.HasTimeSpan)

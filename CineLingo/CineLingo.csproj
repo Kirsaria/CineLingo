@@ -129,6 +129,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data\DatabaseManager.cs" />
+    <Compile Include="Data\MovieService.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -241,7 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="Data\" />
     <Folder Include="Subtitiles\" />
   </ItemGroup>
   <ItemGroup>

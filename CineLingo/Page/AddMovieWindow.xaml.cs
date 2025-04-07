@@ -1,11 +1,11 @@
 ﻿using System.Windows;
 using Microsoft.Win32;
 using CineLingo.Models;
+using CineLingo.Data;
 using System.Windows.Controls;
-using CineLingo.Page;
-using MySql.Data.MySqlClient;
 using System;
 using System.Linq;
+using CineLingo.Page;
 
 namespace CineLingo.Views
 {
@@ -13,13 +13,26 @@ namespace CineLingo.Views
     {
         public Movie NewMovie { get; private set; }
         public SubtitleInfo NewSubtitle { get; private set; }
+        private bool _isEditMode;
+        private int _existingMovieId;
+        private MovieService _movieService;
 
-        public AddMovieWindow(string level)
+        public AddMovieWindow(string level, bool isEditMode = false, int existingMovieId = -1)
         {
             InitializeComponent();
             LevelComboBox.SelectedItem = LevelComboBox.Items
-            .Cast<ComboBoxItem>()
-            .FirstOrDefault(item => item.Content.ToString() == level);
+                .Cast<ComboBoxItem>()
+                .FirstOrDefault(item => item.Content.ToString() == level);
+
+            _isEditMode = isEditMode;
+            _existingMovieId = existingMovieId;
+            _movieService = new MovieService(AuthWindow.ConnectionString);
+
+            if (_isEditMode)
+            {
+                Title = "Редактировать фильм";
+                AddButton.Content = "Сохранить";
+            }
         }
 
         private void BrowseSubtitleButton_Click(object sender, RoutedEventArgs e)
@@ -38,52 +51,64 @@ namespace CineLingo.Views
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            if (ValidateInputs())
+            {
+                NewMovie = new Movie
+                {
+                    Title = TitleTextBox.Text,
+                    Description_movie = DescriptionTextBox.Text,
+                    VideoUrl = VideoUrlTextBox.Text,
+                    PosterUrl = PosterUrlTextBox.Text,
+                    Level_en = ((ComboBoxItem)LevelComboBox.SelectedItem).Content.ToString()
+                };
+
+                NewSubtitle = new SubtitleInfo
+                {
+                    Language = SubtitleLanguageTextBox.Text,
+                    FilePath = SubtitleFileTextBox.Text
+                };
+
+                if (_isEditMode)
+                {
+                    NewMovie.Id = _existingMovieId;
+                    DialogResult = true;
+                }
+                else
+                {
+                    DialogResult = true;
+                }
+                Close();
+            }
+        }
+
+        private bool ValidateInputs()
+        {
             if (string.IsNullOrWhiteSpace(TitleTextBox.Text))
             {
-                MessageBox.Show("Введите название фильма!", "Ошибка",
-                              MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                MessageBox.Show("Введите название фильма!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
             }
 
             if (LevelComboBox.SelectedItem == null)
             {
-                MessageBox.Show("Выберите уровень английского!", "Ошибка",
-                              MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                MessageBox.Show("Выберите уровень английского!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(VideoUrlTextBox.Text))
             {
-                MessageBox.Show("Введите ссылку на видео!", "Ошибка",
-                              MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                MessageBox.Show("Введите ссылку на видео!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(SubtitleLanguageTextBox.Text) ||
                 string.IsNullOrWhiteSpace(SubtitleFileTextBox.Text))
             {
-                MessageBox.Show("Заполните информацию о субтитрах!", "Ошибка",
-                              MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                MessageBox.Show("Заполните информацию о субтитрах!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
             }
 
-            NewMovie = new Movie
-            {
-                Title = TitleTextBox.Text,
-                Description_movie = DescriptionTextBox.Text,
-                VideoUrl = VideoUrlTextBox.Text,
-                PosterUrl = PosterUrlTextBox.Text,
-                Level_en = ((ComboBoxItem)LevelComboBox.SelectedItem).Content.ToString()
-            };
-
-            NewSubtitle = new SubtitleInfo
-            {
-                Language = SubtitleLanguageTextBox.Text,
-                FilePath = SubtitleFileTextBox.Text
-            };
-
-            DialogResult = true;
-            Close();
+            return true;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -91,75 +116,5 @@ namespace CineLingo.Views
             DialogResult = false;
             Close();
         }
-
-        private bool SaveMovieWithSubtitles(Movie movie, SubtitleInfo subtitle)
-        {
-            try
-            {
-                using (var connection = new MySqlConnection(AuthWindow.ConnectionString))
-                {
-                    connection.Open();
-                    using (var transaction = connection.BeginTransaction())
-                    {
-                        try
-                        {
-                            var movieQuery = @"
-                        INSERT INTO Movies 
-                        (title, description_movie, video_url, poster_url, level_en, added_by) 
-                        VALUES (@title, @description, @videoUrl, @posterUrl, @level, @userId);
-                        SELECT LAST_INSERT_ID();";
-
-                            int movieId;
-                            using (var movieCommand = new MySqlCommand(movieQuery, connection, transaction))
-                            {
-                                movieCommand.Parameters.AddWithValue("@title", movie.Title);
-                                movieCommand.Parameters.AddWithValue("@description", movie.Description_movie);
-                                movieCommand.Parameters.AddWithValue("@videoUrl", movie.VideoUrl);
-                                movieCommand.Parameters.AddWithValue("@posterUrl", movie.PosterUrl);
-                                movieCommand.Parameters.AddWithValue("@level", movie.Level_en);
-                                movieCommand.Parameters.AddWithValue("@userId", AuthWindow.CurrentUserId);
-
-                                movieId = Convert.ToInt32(movieCommand.ExecuteScalar());
-                            }
-
-                            var subtitleQuery = @"
-                        INSERT INTO Subtitles 
-                        (movie_id, language_sub, subtitle_file, added_by) 
-                        VALUES (@movieId, @language, @subtitleFile, @userId)";
-
-                            using (var subtitleCommand = new MySqlCommand(subtitleQuery, connection, transaction))
-                            {
-                                subtitleCommand.Parameters.AddWithValue("@movieId", movieId);
-                                subtitleCommand.Parameters.AddWithValue("@language", subtitle.Language);
-                                subtitleCommand.Parameters.AddWithValue("@subtitleFile", subtitle.FilePath);
-                                subtitleCommand.Parameters.AddWithValue("@userId", AuthWindow.CurrentUserId);
-
-                                subtitleCommand.ExecuteNonQuery();
-                            }
-
-                            transaction.Commit();
-                            return true;
-                        }
-                        catch
-                        {
-                            transaction.Rollback();
-                            throw;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при сохранении: {ex.Message}", "Ошибка",
-                              MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-        }
-    }
-
-    public class SubtitleInfo
-    {
-        public string Language { get; set; }
-        public string FilePath { get; set; }
     }
 }
