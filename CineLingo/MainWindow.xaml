@@ -28,6 +28,8 @@
                     <Button Style="{DynamicResource ButtonStyle}" Content="Видеоплеер" Click="NavigateToVideoPlayer" Margin="10,0" Padding="20 5" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" Margin="10,0">
+                    <Button x:Name="telegramButton" Style="{DynamicResource TelegramStyle}" Click="TelegramButton_Click" Margin="10,0"
+            ToolTip="Открыть Telegram бота"/>
                     <Button x:Name="SwitchThemeButton" Style="{DynamicResource DarkStyle}" Click="SwitchTheme" Margin="10 0"/>
                     <Button x:Name="user" Style="{DynamicResource UserStyle}" Click="UserButton_Click" Margin="10,0"/>
                     <Button x:Name="hidewindow" Style="{DynamicResource MinimizeStyle}" Click="MinimizeButton_Click" Margin="10,0"/>

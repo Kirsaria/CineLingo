@@ -1,6 +1,7 @@
 ﻿using CineLingo.Page;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -219,6 +220,22 @@ namespace CineLingo
             Application.Current.Resources.Clear();
             Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
             isLightTheme = !isLightTheme;
+        }
+
+        private void TelegramButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "tg://resolve?domain=CineLingoBot",
+                    UseShellExecute = true
+                });
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Не удалось открыть Telegram: {ex.Message}");
+            }
         }
     }
 }

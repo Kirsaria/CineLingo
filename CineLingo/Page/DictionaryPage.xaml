@@ -8,7 +8,7 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="DictionaryPage">
 
-    <Grid Background="#252B2B">
+    <Grid Style="{DynamicResource GridStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -16,12 +16,11 @@
 
         <!-- Заголовок и фильтры -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
-            <TextBlock Text="Мой словарь" Foreground="#EFDFC5" FontSize="20" VerticalAlignment="Center"/>
-
+            <TextBlock Text="Мой словарь" Style="{DynamicResource TextBlockStyle}" FontSize="20" VerticalAlignment="Center"/>
             <TextBox x:Name="SearchBox" 
                      materialDesign:HintAssist.Hint="Поиск по словарю..." 
                      Margin="20,0,0,0" Width="200"
-                     TextChanged="SearchBox_TextChanged"/>
+                     TextChanged="SearchBox_TextChanged" />
 
             <ComboBox x:Name="FilterComboBox" 
                       Margin="10,0,0,0" Width="150"
@@ -42,7 +41,7 @@
         <ListView x:Name="DictionaryListView" Grid.Row="1" Margin="10" Background="Transparent">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="#EFDFC5" BorderThickness="0,0,0,1" Padding="0,5">
+                    <Border Style="{DynamicResource BorderStyle}" BorderThickness="0,0,0,1" Padding="0,5">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -51,19 +50,19 @@
 
                             <StackPanel Grid.Column="0" Margin="0,0,10,0" MinWidth="150">
                                 <TextBlock Text="{Binding WordOrPhrase}" 
-                                           Foreground="#EFDFC5" FontWeight="Bold" FontSize="16"/>
+                                           Style="{DynamicResource TextBlockStyle}" FontWeight="Bold" FontSize="16"/>
                                 <TextBlock Text="{Binding Translation}" 
-                                           Foreground="#EFDFC5" FontSize="14" Margin="0,5,0,0"/>
+                                           Style="{DynamicResource TextBlockStyle}" FontSize="14" Margin="0,5,0,0"/>
                                 <TextBlock Text="{Binding AddedDate, StringFormat='Добавлено: {0:dd.MM.yyyy}'}" 
-                                           Foreground="#EFDFC5" FontSize="12" Margin="0,5,0,0"/>
+                                          Style="{DynamicResource TextBlockStyle}" FontSize="12" Margin="0,5,0,0"/>
                             </StackPanel>
 
                             <StackPanel Grid.Column="1">
                                 <TextBlock Text="{Binding Fullsentence}" 
-                                           Foreground="#EFDFC5" TextWrapping="Wrap"/>
+                                           Style="{DynamicResource TextBlockStyle}" TextWrapping="Wrap"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <TextBlock Text="Файл: " Foreground="#EFDFC5"/>
-                                    <TextBlock Text="{Binding SubtitleFile}" Foreground="#EFDFC5" FontStyle="Italic"/>
+                                    <TextBlock Text="Файл: " Style="{DynamicResource TextBlockStyle}"/>
+                                    <TextBlock Text="{Binding SubtitleFile}" Style="{DynamicResource TextBlockStyle}" FontStyle="Italic"/>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>

@@ -4,22 +4,22 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:vlc="clr-namespace:LibVLCSharp.WPF;assembly=LibVLCSharp.WPF"
       xmlns:local="clr-namespace:CineLingo.Page"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Focusable="True"
       Title="VideoPlayerPage">
+
     <Grid>
-        <Label x:Name="TitleLbl" Style="{DynamicResource LabelStyle}" Content="Медиаплеер" Padding="5,0,5,5" Margin="20" FontWeight="SemiBold" FontSize="16" BorderThickness="0,0,0,2"/>
+        <Label x:Name="TitleLbl" Style="{DynamicResource LabelStyle}" Content="Медиаплеер"
+               Padding="5,0,5,5" Margin="20" FontWeight="SemiBold" FontSize="16" BorderThickness="0,0,0,2"/>
+
         <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,51,0,0">
-            <Grid x:Name="PlayerContainer" Width="Auto" Height="454">
-                <MediaElement x:Name="Player" LoadedBehavior="Manual" Stretch="Uniform" Volume="{Binding Value, ElementName=VolumeSlider}"/>
-                <Border x:Name="ControlPanel"
-                        Background="#80000000"
-                        VerticalAlignment="Bottom"
-                        HorizontalAlignment="Stretch"
-                        Padding="10"
-                        Opacity="1">
+            <StackPanel>
+                <vlc:VideoView x:Name="Player" Height="380"/>
+
+                <Border x:Name="ControlPanel" Background="#80000000" Padding="10" HorizontalAlignment="Stretch" Opacity="1">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Name="OpenFolder" Click="OpenFolder_Click" Padding="5" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -37,56 +37,25 @@
                             </StackPanel>
                         </Button>
                         <TextBlock Name="StatusLbl" FontSize="14" Foreground="White" VerticalAlignment="Center" Margin="10,0" MinWidth="60" TextAlignment="Center">00:00:00</TextBlock>
-                        <Slider x:Name="ProgressSlider" Maximum="1" Thumb.DragStarted="ProgressSlider_DragStarted"  Thumb.DragCompleted="ProgressSlider_DragCompleted" ValueChanged="ProgressSlider_ValueChanged" VerticalAlignment="Center" Width="200"/>
-                        <Slider x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="0.5" Width="100" VerticalAlignment="Center"/>
+                        <Slider x:Name="ProgressSlider" Maximum="1" Thumb.DragStarted="ProgressSlider_DragStarted" Thumb.DragCompleted="ProgressSlider_DragCompleted" ValueChanged="ProgressSlider_ValueChanged" VerticalAlignment="Center" Width="200"/>
+                        <Slider x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="0.5" Width="100" VerticalAlignment="Center" ValueChanged="VolumeSlider_ValueChanged"/>
                     </StackPanel>
                 </Border>
-                <Grid.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter" SourceName="PlayerContainer">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="ControlPanel" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave" SourceName="PlayerContainer">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="ControlPanel" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.3"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Grid.Triggers>
-            </Grid>
-            <Button Name="OpenSubtitles" 
-                    Click="OpenSubtitles_Click" 
-                    Padding="5" 
-                    Margin="0,20,0,0" 
-                    HorizontalAlignment="Left"
-                    Background="Transparent" 
-                    BorderBrush="Transparent">
+            </StackPanel>
+
+            <Button Name="OpenSubtitles" Click="OpenSubtitles_Click" Padding="5" Margin="0,20,0,0" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <Image Height="24" Width="24" Source="/Images/folder.png"/>
-                    <TextBlock Text="Open Subtitles" Margin="5,0,0,0"/>
+                    <TextBlock Text="Открыть субтитры" Margin="5,0,0,0"/>
                 </StackPanel>
             </Button>
-            <TextBox x:Name="SubtitlesTextBox" Style="{DynamicResource TextBoxStyle}"
-             BorderThickness="0" 
-             Background="Transparent"
-             FontSize="16" 
-             Margin="0"
-             Padding="2" 
-             IsReadOnly="True"
-             SelectionChanged="SubtitlesTextBox_SelectionChanged"
-             ContextMenuOpening="SubtitlesTextBox_ContextMenuOpening"
-             Width="699" 
-             Height="70">
+
+            <TextBox x:Name="SubtitlesTextBox" Style="{DynamicResource TextBoxStyle}" BorderThickness="0" Background="Transparent"
+                     FontSize="16" Margin="0" Padding="2" IsReadOnly="True" SelectionChanged="SubtitlesTextBox_SelectionChanged"
+                     ContextMenuOpening="SubtitlesTextBox_ContextMenuOpening" Width="699" Height="70">
                 <TextBox.ContextMenu>
-                    <ContextMenu x:Name="SubtitleContextMenu" 
-                    Background="#252B2B" 
-                    Foreground="#EFDFC5">
-                        <MenuItem Header="Сохранить в словарь" 
-                      Click="SaveToDictionaryMenuItem_Click">
+                    <ContextMenu x:Name="SubtitleContextMenu" Background="#252B2B" Foreground="#EFDFC5">
+                        <MenuItem Header="Сохранить в словарь" Click="SaveToDictionaryMenuItem_Click">
                             <MenuItem.Icon>
                                 <Image Source="/Images/folder.png" Width="16" Height="16"/>
                             </MenuItem.Icon>
@@ -94,22 +63,17 @@
                     </ContextMenu>
                 </TextBox.ContextMenu>
             </TextBox>
+
             <StackPanel>
-                <Label x:Name="TranslationLabel" Style="{DynamicResource LabelStyle}"
-                     Content="Перевод: " 
-                     FontSize="16" 
-                     HorizontalAlignment="Stretch" 
-                     VerticalAlignment="Bottom" 
-                     Background="Transparent"
-                     Padding="10"/>
+                <Label x:Name="TranslationLabel" Style="{DynamicResource LabelStyle}" Content="Перевод:" 
+                       FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" 
+                       Background="Transparent" Padding="10"/>
             </StackPanel>
         </StackPanel>
+
         <StackPanel Margin="960,30,20,52">
-            <TextBlock Text="Словарь" Style="{DynamicResource TextBlockStyle}" 
-                           FontSize="16" 
-                           FontWeight="SemiBold"
-                           Margin="0,0,0,10"/>
-            <ListView x:Name="DictionaryList" Background="Transparent" BorderThickness="0">
+            <TextBlock Text="Словарь" Style="{DynamicResource TextBlockStyle}" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,10"/>
+            <ListView x:Name="DictionaryList" Background="Transparent" BorderThickness="0" ItemsSource="{Binding DictionaryItems}">
                 <ListView.Style>
                     <Style TargetType="ListView">
                         <Setter Property="Background" Value="Transparent"/>
@@ -118,8 +82,7 @@
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate>
-                                            <TextBlock Text="Нет сохраненных слов для этого файла" 
-                                           Foreground="#8F8F8F"/>
+                                            <TextBlock Text="Нет сохранённых слов для этого файла" Foreground="#8F8F8F"/>
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>
@@ -130,10 +93,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="0 5">
-                            <TextBlock Text="{Binding WordOrPhrase}" Style="{DynamicResource TextBlockStyle}"
-                                           FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Translation}" Style="{DynamicResource TextBlockStyle}"
-                                           Margin="5,0,0,0"/>
+                            <TextBlock Text="{Binding WordOrPhrase}" Style="{DynamicResource TextBlockStyle}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Translation}" Style="{DynamicResource TextBlockStyle}" Margin="5,0,0,0"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -128,7 +128,7 @@ VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDoubleClick="OnMo
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Width="200" Height="300" Margin="10" BorderBrush="Gray" BorderThickness="1"  Style="{StaticResource MovieItemStyle}">
+                                    <Border Style="{StaticResource MovieItemStyle}">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
@@ -165,7 +165,7 @@ VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDoubleClick="OnMo
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Width="200" Height="300" Margin="10" BorderBrush="Gray" BorderThickness="1"  Style="{StaticResource MovieItemStyle}">
+                                    <Border Style="{StaticResource MovieItemStyle}">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
@@ -202,7 +202,7 @@ VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDoubleClick="OnMo
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Width="200" Height="300" Margin="10" BorderBrush="Gray" BorderThickness="1"  Style="{StaticResource MovieItemStyle}">
+                                    <Border Style="{StaticResource MovieItemStyle}">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
@@ -239,7 +239,7 @@ VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseDoubleClick="OnMo
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Width="200" Height="300" Margin="10" BorderBrush="Gray" BorderThickness="1"  Style="{StaticResource MovieItemStyle}">
+                                    <Border Style="{StaticResource MovieItemStyle}">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>

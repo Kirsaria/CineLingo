@@ -149,4 +149,11 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="TelegramStyle" TargetType="Button" BasedOn="{StaticResource BaseIconButtonStyle}">
+        <Setter Property="Content">
+            <Setter.Value>
+                <Image Source="/Images/telegram_icon_light.png" Stretch="Uniform" Width="30" Height="30"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
