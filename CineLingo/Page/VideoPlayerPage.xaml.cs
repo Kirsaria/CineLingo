@@ -23,6 +23,7 @@ using CineLingo.Data;
 using LibVLCSharp.Shared;
 using LibVLCSharp.WPF;
 using VlcMediaPlayer = LibVLCSharp.Shared.MediaPlayer;
+using System.Windows.Media;
 
 namespace CineLingo.Page
 {
@@ -60,7 +61,7 @@ namespace CineLingo.Page
             InitializeComponent();
             Core.Initialize();
             _libVLC = new LibVLC();
-            _mediaPlayer = new MediaPlayer(_libVLC);
+            _mediaPlayer = new VlcMediaPlayer(_libVLC);
             Player.MediaPlayer = _mediaPlayer;
             PromptTimer.Tick += PromptTimer_Tick;
             VolumeSlider.GotFocus += (s, e) => IsVolumeSliderFocused = true;
@@ -312,7 +313,6 @@ namespace CineLingo.Page
             if (IsUserDraggingSlider)
                 StatusLbl.Text = TimeSpan.FromSeconds(ProgressSlider.Value).ToString(@"hh\:mm\:ss");
         }
-
         private async void SaveToDictionaryMenuItem_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(SubtitlesTextBox.SelectedText)) return;
@@ -331,22 +331,58 @@ namespace CineLingo.Page
 
         private async Task SaveWord(string wordOrPhrase, string fullSentence)
         {
-            if (AuthWindow.CurrentUserId == 0) { MessageBox.Show("Пожалуйста, войдите в систему, чтобы сохранять слова"); return; }
-            var translation = await TranslateTextAsync(wordOrPhrase);
-            if (string.IsNullOrEmpty(translation)) { MessageBox.Show("Не удалось получить перевод"); return; }
+            if (AuthWindow.CurrentUserId == 0)
+            {
+                MessageBox.Show("Пожалуйста, войдите в систему, чтобы сохранять слова");
+                return;
+            }
+
+            wordOrPhrase = System.Text.RegularExpressions.Regex.Replace(wordOrPhrase, @"[^a-zA-Zа-яА-ЯёЁ\s]", "").Trim();
+            if (string.IsNullOrWhiteSpace(wordOrPhrase))
+            {
+                MessageBox.Show("Выбранный текст не содержит допустимых слов для сохранения.");
+                return;
+            }
+
             try
             {
                 using (var conn = new MySqlConnection(AuthWindow.ConnectionString))
                 {
                     await conn.OpenAsync();
-                    var query = @"INSERT INTO DictionaryItem (userId, WordOrPhrase, fullsentence, translation, subtitleFile) VALUES (@userId, @word, @sentence, @translation, @subtitle)";
-                    using (var cmd = new MySqlCommand(query, conn))
+
+                    // Проверка, существует ли уже такое слово у текущего пользователя с этим subtitle-файлом
+                    string checkQuery = @"SELECT COUNT(*) FROM DictionaryItem 
+                                  WHERE userId = @userId AND WordOrPhrase = @word";
+                    using (var checkCmd = new MySqlCommand(checkQuery, conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@userId", AuthWindow.CurrentUserId);
+                        checkCmd.Parameters.AddWithValue("@word", wordOrPhrase);
+
+                        var count = Convert.ToInt32(await checkCmd.ExecuteScalarAsync());
+                        if (count > 0)
+                        {
+                            MessageBox.Show("Это слово уже добавлено в ваш словарь.");
+                            return;
+                        }
+                    }
+
+                    var translation = await TranslateTextAsync(wordOrPhrase);
+                    if (string.IsNullOrEmpty(translation))
+                    {
+                        MessageBox.Show("Не удалось получить перевод");
+                        return;
+                    }
+
+                    string insertQuery = @"INSERT INTO DictionaryItem (userId, WordOrPhrase, fullsentence, translation, subtitleFile)
+                                   VALUES (@userId, @word, @sentence, @translation, @subtitle)";
+                    using (var cmd = new MySqlCommand(insertQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("@userId", AuthWindow.CurrentUserId);
                         cmd.Parameters.AddWithValue("@word", wordOrPhrase);
                         cmd.Parameters.AddWithValue("@sentence", fullSentence);
                         cmd.Parameters.AddWithValue("@translation", translation);
                         cmd.Parameters.AddWithValue("@subtitle", _currentSubtitleFile);
+
                         if (await cmd.ExecuteNonQueryAsync() > 0)
                         {
                             MessageBox.Show("Слово сохранено в словарь");
@@ -355,8 +391,12 @@ namespace CineLingo.Page
                     }
                 }
             }
-            catch (Exception ex) { MessageBox.Show($"Ошибка при сохранении: {ex.Message}"); }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении: {ex.Message}");
+            }
         }
+
 
         private async void LoadWordsForCurrentSubtitles()
         {
@@ -391,5 +431,34 @@ namespace CineLingo.Page
         {
             if (string.IsNullOrWhiteSpace(SubtitlesTextBox.SelectedText)) e.Handled = true;
         }
+        private bool isFullscreen = false;
+        private void FullscreenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isFullscreen)
+            {
+                TitleLbl.Visibility = Visibility.Collapsed;
+                SubtitlePanel.Visibility = Visibility.Collapsed;
+                DictionaryPanel.Visibility = Visibility.Collapsed;
+
+                Grid.SetRowSpan(PlayerContainer, 3);         
+                Grid.SetColumnSpan(PlayerContainer, 2);     
+                PlayerContainer.Height = Double.NaN;
+
+                isFullscreen = true;
+            }
+            else
+            {
+                TitleLbl.Visibility = Visibility.Visible;
+                SubtitlePanel.Visibility = Visibility.Visible;
+                DictionaryPanel.Visibility = Visibility.Visible;
+
+                Grid.SetRowSpan(PlayerContainer, 1);         
+                Grid.SetColumnSpan(PlayerContainer, 1);     
+                PlayerContainer.Height = 400;
+
+                isFullscreen = false;
+            }
+        }
+
     }
 }

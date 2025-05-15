@@ -116,5 +116,43 @@ namespace CineLingo.Page
         {
             LoadDictionaryItems();
         }
+
+        private async void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is MenuItem menuItem && menuItem.CommandParameter is DictionaryItem itemToDelete)
+            {
+                var result = MessageBox.Show($"Удалить '{itemToDelete.WordOrPhrase}' из словаря?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result != MessageBoxResult.Yes) return;
+
+                try
+                {
+                    using (var connection = new MySqlConnection(AuthWindow.ConnectionString))
+                    {
+                        await connection.OpenAsync();
+
+                        string query = @"DELETE FROM DictionaryItem 
+                                 WHERE userId = @userId AND WordOrPhrase = @word AND fullsentence = @sentence AND translation = @translation AND subtitleFile = @subtitle";
+
+                        using (var command = new MySqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@userId", AuthWindow.CurrentUserId);
+                            command.Parameters.AddWithValue("@word", itemToDelete.WordOrPhrase);
+                            command.Parameters.AddWithValue("@sentence", itemToDelete.Fullsentence);
+                            command.Parameters.AddWithValue("@translation", itemToDelete.Translation);
+                            command.Parameters.AddWithValue("@subtitle", itemToDelete.SubtitleFile);
+
+                            await command.ExecuteNonQueryAsync();
+                        }
+                    }
+
+                    LoadDictionaryItems();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при удалении: {ex.Message}");
+                }
+            }
+        }
+
     }
 }

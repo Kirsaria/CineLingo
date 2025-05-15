@@ -42,6 +42,13 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Style="{DynamicResource BorderStyle}" BorderThickness="0,0,0,1" Padding="0,5">
+                        <Border.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Удалить"
+                  Click="DeleteMenuItem_Click"
+                  CommandParameter="{Binding}" />
+                            </ContextMenu>
+                        </Border.ContextMenu>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>

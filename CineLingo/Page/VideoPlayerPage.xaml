@@ -11,16 +11,25 @@
       Focusable="True"
       Title="VideoPlayerPage">
 
-    <Grid>
-        <Label x:Name="TitleLbl" Style="{DynamicResource LabelStyle}" Content="Медиаплеер"
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label x:Name="TitleLbl"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{DynamicResource LabelStyle}" Content="Медиаплеер"
                Padding="5,0,5,5" Margin="20" FontWeight="SemiBold" FontSize="16" BorderThickness="0,0,0,2"/>
 
-        <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,51,0,0">
-            <StackPanel>
-                <vlc:VideoView x:Name="Player" Height="380"/>
-
-                <Border x:Name="ControlPanel" Background="#80000000" Padding="10" HorizontalAlignment="Stretch" Opacity="1">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <Grid x:Name="PlayerContainer" Grid.Column="0" Grid.Row="1" Margin="0 0 20 10" Height="400">
+            <vlc:VideoView x:Name="Player">
+                <Border x:Name="ControlPanel" Background="Transparent" Padding="10" HorizontalAlignment="Stretch" Opacity="1">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                         <Button Name="OpenFolder" Click="OpenFolder_Click" Padding="5" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <Image Height="24" Width="24" Source="/Images/folder.png"/>
@@ -39,10 +48,16 @@
                         <TextBlock Name="StatusLbl" FontSize="14" Foreground="White" VerticalAlignment="Center" Margin="10,0" MinWidth="60" TextAlignment="Center">00:00:00</TextBlock>
                         <Slider x:Name="ProgressSlider" Maximum="1" Thumb.DragStarted="ProgressSlider_DragStarted" Thumb.DragCompleted="ProgressSlider_DragCompleted" ValueChanged="ProgressSlider_ValueChanged" VerticalAlignment="Center" Width="200"/>
                         <Slider x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="0.5" Width="100" VerticalAlignment="Center" ValueChanged="VolumeSlider_ValueChanged"/>
+                        <Button x:Name="FullscreenBtn" Click="FullscreenBtn_Click" Padding="5" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image Height="24" Width="24" Source="/Images/fullscreen.png"/>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                 </Border>
-            </StackPanel>
-
+            </vlc:VideoView>
+        </Grid>
+        <StackPanel x:Name="SubtitlePanel" Grid.Column="0" Grid.Row="2">
             <Button Name="OpenSubtitles" Click="OpenSubtitles_Click" Padding="5" Margin="0,20,0,0" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <Image Height="24" Width="24" Source="/Images/folder.png"/>
@@ -64,14 +79,12 @@
                 </TextBox.ContextMenu>
             </TextBox>
 
-            <StackPanel>
-                <Label x:Name="TranslationLabel" Style="{DynamicResource LabelStyle}" Content="Перевод:" 
+            <Label x:Name="TranslationLabel" Style="{DynamicResource LabelStyle}" Content="Перевод:" 
                        FontSize="16" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" 
                        Background="Transparent" Padding="10"/>
-            </StackPanel>
         </StackPanel>
 
-        <StackPanel Margin="960,30,20,52">
+        <StackPanel x:Name="DictionaryPanel" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3">
             <TextBlock Text="Словарь" Style="{DynamicResource TextBlockStyle}" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,10"/>
             <ListView x:Name="DictionaryList" Background="Transparent" BorderThickness="0" ItemsSource="{Binding DictionaryItems}">
                 <ListView.Style>
