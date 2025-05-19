@@ -6,31 +6,42 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:CineLingo"
         mc:Ignorable="d"
-        Title="CineLingo" 
-        Height="350" 
-        Width="825" 
-        WindowStyle="None" 
+        Title="CineLingo"
+        Height="350"
+        Width="825"
+        WindowStyle="None"
         WindowState="Maximized"
         AllowsTransparency="True"
         Icon="icon.ico">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="10"/>
     </WindowChrome.WindowChrome>
+
     <Grid Style="{DynamicResource GridStyle}">
-        <Border Style="{DynamicResource BorderStyle}" VerticalAlignment="Top" Height="60" Grid.ColumnSpan="3" Margin="0,0,0,0">
+        <Border Style="{DynamicResource BorderStyle}" VerticalAlignment="Top" Height="60" Grid.ColumnSpan="3" Margin="0">
             <Border.Effect>
-                <DropShadowEffect Color="#380F17" Direction="200" BlurRadius="10" ShadowDepth="5" Opacity="0.5" />
+                <DropShadowEffect Color="#380F17" Direction="200" BlurRadius="10" ShadowDepth="5" Opacity="0.5"/>
             </Border.Effect>
-            <Grid VerticalAlignment="Top" Height="60">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0">
-                    <Button Style="{DynamicResource ButtonStyle}" Content="Каталог" Click="NavigateToCatalog" Margin="10,0" Padding="20 5" />
-                    <Button Style="{DynamicResource ButtonStyle}" Content="Словарь" Click="NavigateToDictionary" Margin="10,0" Padding="20 5" />
-                    <Button Style="{DynamicResource ButtonStyle}" Content="Видеоплеер" Click="NavigateToVideoPlayer" Margin="10,0" Padding="20 5" />
+
+            <Grid VerticalAlignment="Top" Height="65">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Height="54" Width="64" Margin="10,0" Source="/Images/Logo.png" VerticalAlignment="Center"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Style="{DynamicResource ButtonStyle}" Content="Каталог" Click="NavigateToCatalog" Margin="10,0" Padding="20 5"/>
+                    <Button Style="{DynamicResource ButtonStyle}" Content="Словарь" Click="NavigateToDictionary" Margin="10,0" Padding="20 5"/>
+                    <Button Style="{DynamicResource ButtonStyle}" Content="Видеоплеер" Click="NavigateToVideoPlayer" Margin="10,0" Padding="20 5"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" Margin="10,0">
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0">
                     <Button x:Name="telegramButton" Style="{DynamicResource TelegramStyle}" Click="TelegramButton_Click" Margin="10,0"
-            ToolTip="Открыть Telegram бота"/>
-                    <Button x:Name="SwitchThemeButton" Style="{DynamicResource DarkStyle}" Click="SwitchTheme" Margin="10 0"/>
+                            ToolTip="Открыть Telegram бота"/>
+                    <Button x:Name="SwitchThemeButton" Style="{DynamicResource DarkStyle}" Click="SwitchTheme" Margin="10,0"/>
                     <Button x:Name="user" Style="{DynamicResource UserStyle}" Click="UserButton_Click" Margin="10,0"/>
                     <Button x:Name="hidewindow" Style="{DynamicResource MinimizeStyle}" Click="MinimizeButton_Click" Margin="10,0"/>
                     <Button x:Name="fullscreen" Style="{DynamicResource FullscreenStyle}" Click="MaximizeButton_Click" Margin="10,0"/>
@@ -38,6 +49,6 @@
                 </StackPanel>
             </Grid>
         </Border>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0,60,0,0" />
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0,60,0,0"/>
     </Grid>
 </Window>

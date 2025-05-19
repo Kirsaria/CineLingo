@@ -8,6 +8,8 @@ using System.Text;
 using Telegram.Bot.Types.ReplyMarkups;
 using Telegram.Bot.Types.Enums;
 using CineLingoBot.Services;
+using CineLingoBot;
+using static CineLingoBot.Services.ReminderService;
 
 const string token = "7498065892:AAHAt-D3LPMj1QnErU9RUmhTQcFYqvplNJo";
 
@@ -21,6 +23,9 @@ var keyboardFactory = new KeyboardFactory();
 
 var awaitingLogin = new HashSet<long>();
 var currentTests = new Dictionary<long, (int WordId, string CorrectTranslation)>();
+var reminderService = new ReminderService(bot);
+var awaitingReminderTime = new HashSet<long>();
+
 
 bot.StartReceiving(
     HandleUpdateAsync,
@@ -34,6 +39,20 @@ await Task.Delay(-1, cts.Token);
 
 async Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken ct)
 {
+    if (update.CallbackQuery?.Data?.StartsWith("delete_reminder_") == true)
+    {
+        var timeStr = update.CallbackQuery.Data.Replace("delete_reminder_", "");
+        if (TimeSpan.TryParse(timeStr, out var time))
+        {
+            if (reminderService.RemoveReminderTime(update.CallbackQuery.From.Id, time))
+            {
+                await client.AnswerCallbackQuery(update.CallbackQuery.Id, "🗑 Напоминание удалено", cancellationToken: ct);
+                await client.SendMessage(update.CallbackQuery.Message.Chat.Id, $"❌ Удалено напоминание: {time:hh\\:mm}", cancellationToken: ct);
+            }
+        }
+        return;
+    }
+
     if (update.CallbackQuery?.Data?.StartsWith("reset_") == true)
     {
         await ProcessResetProgress(client, update.CallbackQuery, ct);
@@ -48,6 +67,12 @@ async Task HandleUpdateAsync(ITelegramBotClient client, Update update, Cancellat
 
     if (update.Message is not { Text: { } text, From: { Id: var telegramId } }) return;
     var chatId = update.Message.Chat.Id;
+
+    if (reminderService._userStates.TryGetValue(telegramId, out var state) && state != ReminderService.ReminderState.None)
+    {
+        await reminderService.ProcessTimeInput(telegramId, chatId, text);
+        return;
+    }
 
     try
     {
@@ -67,6 +92,60 @@ async Task HandleUpdateAsync(ITelegramBotClient client, Update update, Cancellat
                 break;
             case "Сбросить прогресс":
                 await HandleResetProgress(client, chatId, telegramId, ct);
+                break;
+            case "Управление напоминаниями":
+                await HandleRemindersCommand(client, chatId, telegramId, ct);
+                break;
+            case "Добавить время напоминания":
+                await reminderService.StartSettingReminder(telegramId, chatId);
+                break;
+            case "Отключить все напоминания":
+                reminderService.RemoveAllReminders(telegramId);
+                await client.SendMessage(chatId, "🔕 Все напоминания отключены.", cancellationToken: ct);
+                break;
+            case "Включить уведомление":
+                await reminderService.SubscribeAsync(telegramId, chatId);
+                break;
+            case "Выключить уведомление":
+                reminderService.Unsubscribe(telegramId);
+                await client.SendMessage(chatId, "🔕 Напоминание отключено.", cancellationToken: ct);
+                break;
+            case "Посмотреть напоминания":
+                if (reminderService.TryGetReminderTimes(telegramId, out var reminderTimes))
+                {
+                    var message = "🔔 Установленные напоминания:\n" +
+                                  string.Join("\n", reminderTimes.Select(t => $"• {t:hh\\:mm}"));
+                    await client.SendMessage(chatId, message, cancellationToken: ct);
+                }
+                else
+                {
+                    await client.SendMessage(chatId, "📭 У вас нет активных напоминаний.", cancellationToken: ct);
+                }
+                break;
+
+            case "Удалить конкретное напоминание":
+                if (reminderService.TryGetReminderTimes(telegramId, out var timesToDelete))
+                {
+                    var buttons = timesToDelete
+                        .Select(t => InlineKeyboardButton.WithCallbackData(t.ToString("hh\\:mm"), $"delete_reminder_{t}"))
+                        .Select(b => new[] { b })
+                        .ToArray();
+
+                    await client.SendMessage(chatId,
+                        "🗑 Выберите напоминание для удаления:",
+                        replyMarkup: new InlineKeyboardMarkup(buttons),
+                        cancellationToken: ct);
+                }
+                else
+                {
+                    await client.SendMessage(chatId, "📭 У вас нет напоминаний для удаления.", cancellationToken: ct);
+                }
+                break;
+            case "Назад в меню":
+                await client.SendMessage(chatId,
+                    "Главное меню:",
+                    replyMarkup: keyboardFactory.GetMainKeyboard(),
+                    cancellationToken: ct);
                 break;
             default:
                 if (awaitingLogin.Contains(telegramId))
@@ -263,6 +342,19 @@ async Task ProcessTestAnswerAsync(ITelegramBotClient client, CallbackQuery callb
     currentTests.Remove(telegramId);
 }
 
+async Task HandleRemindersCommand(ITelegramBotClient client, long chatId, long telegramId, CancellationToken ct)
+{
+    var hasReminders = reminderService.HasReminders(telegramId);
+    var message = hasReminders
+        ? "⏰ Ваши текущие напоминания активны. Вы можете добавить новые или отключить все."
+        : "⏰ У вас пока нет установленных напоминаний. Хотите добавить?";
+
+    await client.SendMessage(chatId,
+        message,
+        replyMarkup: keyboardFactory.GetRemindersKeyboard(),
+        cancellationToken: ct);
+}
+
 public class KeyboardFactory
 {
     public ReplyKeyboardMarkup GetMainKeyboard() => new ReplyKeyboardMarkup(new[]
@@ -271,6 +363,7 @@ public class KeyboardFactory
     new[] { new KeyboardButton("Тест: слова") },
     new[] { new KeyboardButton("Тест: пропуски") },
     new[] { new KeyboardButton("Сбросить прогресс") },
+    new[] { new KeyboardButton("Управление напоминаниями") },
     new[] { new KeyboardButton("/start") }
     })
     {
@@ -278,6 +371,18 @@ public class KeyboardFactory
         OneTimeKeyboard = false
     };
 
+    public ReplyKeyboardMarkup GetRemindersKeyboard() => new ReplyKeyboardMarkup(new[]
+    {
+    new[] { new KeyboardButton("Добавить время напоминания") },
+    new[] { new KeyboardButton("Посмотреть напоминания") },
+    new[] { new KeyboardButton("Удалить конкретное напоминание") },
+    new[] { new KeyboardButton("Отключить все напоминания") },
+    new[] { new KeyboardButton("Назад в меню") }
+    })
+    {
+        ResizeKeyboard = true,
+        OneTimeKeyboard = false
+    };
 
     public InlineKeyboardMarkup CreateInlineOptions(List<string> options)
     {

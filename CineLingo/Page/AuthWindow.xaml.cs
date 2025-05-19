@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MaterialDesignThemes.Wpf;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,6 @@ using System.Windows.Shapes;
 
 namespace CineLingo.Page
 {
-    /// <summary>
-    /// Логика взаимодействия для AuthWindow.xaml
-    /// </summary>
     public partial class AuthWindow : Window
     {
         public const string ConnectionString = "Server=localhost;Database=cineLingoDictionary;User Id=root;Password=1111;";
@@ -47,7 +45,7 @@ namespace CineLingo.Page
             string password = LoginPassword.Password;
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Пожалуйста, введите логин и пароль");
+                DialogHost.Show("Пожалуйста, введите логин и пароль");
                 return;
             }
             try

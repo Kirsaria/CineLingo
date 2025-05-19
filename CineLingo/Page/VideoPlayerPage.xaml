@@ -50,7 +50,7 @@
                         <Slider x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="0.5" Width="100" VerticalAlignment="Center" ValueChanged="VolumeSlider_ValueChanged"/>
                         <Button x:Name="FullscreenBtn" Click="FullscreenBtn_Click" Padding="5" Margin="0 0 10 0" Background="Transparent" BorderBrush="Transparent">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Image Height="24" Width="24" Source="/Images/fullscreen.png"/>
+                                <Image Height="24" Width="24" Source="/Images/fullScreenPlayer.png"/>
                             </StackPanel>
                         </Button>
                     </StackPanel>

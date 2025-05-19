@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CineLingoBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0133c71fe3a4eb5cd014156ce18c5d57f731da31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+681d1af534a4b0c527e7eba42950d9b3e2b8a049")]
 [assembly: System.Reflection.AssemblyProductAttribute("CineLingoBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CineLingoBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

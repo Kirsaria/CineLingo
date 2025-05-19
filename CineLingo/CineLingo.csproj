@@ -162,10 +162,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Page\FullscreenWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Page\VideoPlayerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,9 +198,6 @@
     <Compile Include="Page\DictionaryPage.xaml.cs">
       <DependentUpon>DictionaryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Page\FullscreenWindow.xaml.cs">
-      <DependentUpon>FullscreenWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Page\VideoPlayerPage.xaml.cs">
       <DependentUpon>VideoPlayerPage.xaml</DependentUpon>
     </Compile>
@@ -233,15 +226,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\folder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Play.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Pause.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\fullScreen.png" />
@@ -288,6 +272,11 @@
   <ItemGroup>
     <Resource Include="Images\telegram_icon.png" />
     <Resource Include="Images\telegram_icon_light.png" />
+    <Resource Include="Images\Pause.png" />
+    <Resource Include="Images\Play.png" />
+    <Resource Include="Images\FullScreenPlayer.png" />
+    <Resource Include="Images\Folder.png" />
+    <Resource Include="Images\Logo.png" />
     <Content Include="libvlc.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

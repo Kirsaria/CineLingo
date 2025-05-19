@@ -1361,5 +1361,3 @@ D:\Programming\CineLingoGit\CineLingo\obj\Debug\CineLingo.csproj.CoreCompileInpu
 D:\Programming\CineLingoGit\CineLingo\obj\Debug\CineLingo.csproj.Up2Date
 D:\Programming\CineLingoGit\CineLingo\obj\Debug\CineLingo.exe
 D:\Programming\CineLingoGit\CineLingo\obj\Debug\CineLingo.pdb
-D:\Programming\CineLingoGit\CineLingo\obj\Debug\Page\FullscreenWindow.g.cs
-D:\Programming\CineLingoGit\CineLingo\obj\Debug\Page\FullscreenWindow.baml

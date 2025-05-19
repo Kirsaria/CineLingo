@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
+using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
 
 public class ProgressManager
@@ -43,12 +44,10 @@ public class ProgressManager
         {
             string json = JsonConvert.SerializeObject(progressData, Formatting.Indented);
             File.WriteAllText(ProgressFilePath, json);
-            MessageBox.Show($"Saved progress data: {json}");
-            MessageBox.Show($"Saved to: {ProgressFilePath}");
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Ошибка при сохранении прогресса: {ex.Message}");
+            DialogHost.Show($"Ошибка при сохранении прогресса: {ex.Message}");
         }
     }
 
